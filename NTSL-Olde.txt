@@ -1,0 +1,139 @@
+
+
+
+def implode($vector, $adder)
+{ 
+	$returnString = "";
+	$index = 1;
+
+	while($index <= length($vector))
+	{
+		$at = at($vector, $index);
+		$toAdd = $adder;
+		if($index == 1)
+		{
+			$toAdd = "";
+		}
+		$returnString = $returnString + $toAdd + $at;
+		$index += 1;
+	}
+	return $returnString;
+} 
+
+def Initialize()
+{
+
+	
+	$words = vector("gun", "cannon",
+					"my", "my own",
+					"security", "town watch",
+					"are", "art",
+					"yeah", "aye",
+					"captain", "King",
+					"Suit sensors", "Health Diviners",
+					"bar", "Inn",
+					"hos", "Town Watch Commander",
+					"ce", "Head Builder",
+					"dead", "gone to Sovngarde",
+           				"rd", "Lead Scientist",
+					"assistant", "peasant",
+					"Borg", "dwarven automaton",
+					"Borgs", "dwarven automatons",
+					"cyborg", "dwarven automaton",
+					"cyborgs", "dwarven automatons",
+					"Shut up", "Close thine trap",
+					"Butt", "Arse",
+					"Butts", "Arses",
+					"doctor", "healer",
+					"doctors", "healers",
+					"dick", "fallice",
+					"dicks", "fallices",
+					"diona", "plant",
+					"tajara", "cat",
+					"tajaran", "cat",
+					"skrell", "warbler",
+					"skrellian", "warblean",
+					"skrells", "warblers",
+					"cargo train", "locomotive",
+					"mulebot", "horse",
+					"mulebots", "horses",
+					"cargo", "shipping dock",
+					"ipecac", "grog",
+					"medical", "hospital",
+					"unathi", "dragon",
+					"human", "person",
+					"humans", "people",
+					"medic", "healer",
+					"medics", "healers",
+					"chapel", "church",
+					"chaplain", "vicar",
+					"Comms", "The ear elves",
+					"assistant", "peasant",
+					"Message", "Raven",
+					"room", "hovel",
+					"Janitor", "lowlife",
+					"fuck", "fucketh",
+					"shit", "Shiteth",
+					"officer", "watchman",
+					"officers", "watchmen",
+					"Magic", "Witchcraft",
+					"fucker", "milk drinker",
+					"syndicate", "dragons",
+					"brig", "dungeon",
+					"yours", "thine",
+					"you", "thou",
+					"do", "dost",
+					"has", "hath",
+					"nothing", "naught",
+					"Hungry", "Assuryant",
+					"thanks", "Grammarcy",
+					"hop", "Inn Manager",
+					"ai", 	"King's Servant",
+					"money", "gold coins",
+					"friend", "brother",
+					"station", "town",
+					"shuttle", "Wagon",
+					"engine", "waterwheel",
+ 					"space", "unknown");
+					
+
+	//broadcast("Starting Initialization...");
+ 	
+	$index = 1;
+ 	while($index <= length($words))
+	{
+		$key = at($words, $index);
+		$key = lower($key);
+		$value = at($words, $index+1);
+		mem($key, $value);
+		$index += 2;
+	}
+	//broadcast("Initialization Complete!");
+} 
+
+
+
+if(mem("initialized") != 1)
+{ 
+	Initialize();
+	mem("initialized", 1);
+}
+
+$newContent = explode($content, " ");
+$index = 1;
+while($index <= length($newContent))
+{ 
+
+	$entry = at($newContent, $index);
+	$value = mem(lower($entry));
+
+	if($value)
+	{
+		at($newContent, $index, $value);
+	}
+	
+ 	$index += 1;
+} 
+
+$content = implode($newContent, " ");
+
